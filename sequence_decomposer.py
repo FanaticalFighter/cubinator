@@ -13,7 +13,7 @@ def decompose_sequence(move_sequence):
     for move in moves:
         current_move = move
         if move in ["U", "U'", "D", "D'"]:
-            current_move = "x "
+            current_move = "z "
             if move == "U":
                 current_move += "R "
             elif move == "U'":
@@ -22,7 +22,7 @@ def decompose_sequence(move_sequence):
                 current_move += "L' "
             elif move == "D'":
                 current_move += "L "
-            current_move += "x'"
+            current_move += "z'"
 
         decomposed_sequence += current_move + ' '
 
