@@ -13,9 +13,19 @@ def decompose_sequence(move_sequence):
     for move in moves:
         current_move = move
         if move in ["U", "U'", "D", "D'"]:
-            if move == "U" or move == "U'":
-                pass
-            else if move == "D" or move == "D'":
-                pass
+            current_move = "x "
+            if move == "U":
+                current_move += "R "
+            elif move == "U'":
+                current_move += "R' "
+            elif move == "D":
+                current_move += "L' "
+            elif move == "D'":
+                current_move += "L "
+            current_move += "x'"
 
-        decompose_sequence += current_move + ' '
+        decomposed_sequence += current_move + ' '
+
+    return decomposed_sequence
+
+print decompose_sequence("R U R' U R U U R")
