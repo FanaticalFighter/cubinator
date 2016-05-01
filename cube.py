@@ -165,7 +165,30 @@ class Cube:
         if len(move) > 1 and move[1] == "'":
             counter_clockwise = True
 
-        indexes = self._get_layer(layer)
+        if layer in ['x', 'y', 'z']:
+            indexes = self._get_all_indices()
+        else:
+            indexes = self._get_layer(layer)
+
+        if layer == 'x' and not counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_x_counter_clockwise(self.stickers[i].point)
+        if layer == 'x' and counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_x_clockwise(self.stickers[i].point)
+        if layer == 'y' and not counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_y_counter_clockwise(self.stickers[i].point)
+        if layer == 'y' and counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_y_clockwise(self.stickers[i].point)
+        if layer == 'z' and counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+        if layer == 'z' and not counter_clockwise:
+            for i in indexes:
+                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+
 
         if layer == 'R' and not counter_clockwise:
             for i in indexes:
