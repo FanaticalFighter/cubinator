@@ -102,6 +102,17 @@ class Cube:
 
         return None
 
+    def _get_all_indices(self):
+        '''
+        Returns all the indices in the cube
+        '''
+
+        indices = []
+        for elem, index in zip (self.stickers, range(len(self.stickers))):
+            indices.append(index)
+
+        return indices
+
     def _get_layer(self, layer):
         '''Returns the indexes of all the stickers that would be turned when
         turning the layer defined by the string layer.
