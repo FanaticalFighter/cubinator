@@ -203,3 +203,13 @@ class Cube:
         if layer == 'B' and counter_clockwise:
             for i in indexes:
                 self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+
+    def perform_move_sequence(self, sequence):
+        '''
+        Splits a move sequence like "R U R' U R U U R" into seperate moves and
+        applies them on the cube in order.
+        '''
+
+        moves = sequence.split(' ')
+        for move in moves:
+            self.perform_move(move)
