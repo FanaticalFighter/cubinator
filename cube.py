@@ -1,14 +1,15 @@
 from point import *
 from rotation import *
 
+
 class Sticker:
     def __init__(self, point, color):
         '''
-        Initializes a sticker at point with the color represented by the string color
-        '''
+        Initializes a sticker at point with the color and point'''
 
         self.point = point
         self.color = color
+
 
 class Cube:
     def __init__(self):
@@ -93,7 +94,6 @@ class Cube:
 
         return print_str
 
-
     def _find_sticker_at(self, point):
         '''Finds and returns a sticker at point'''
         for sticker in self.stickers:
@@ -108,7 +108,7 @@ class Cube:
         '''
 
         indices = []
-        for elem, index in zip (self.stickers, range(len(self.stickers))):
+        for elem, index in zip(self.stickers, range(len(self.stickers))):
             indices.append(index)
 
         return indices
@@ -122,32 +122,32 @@ class Cube:
 
         indexes = []
         if layer == 'R':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[0] >= 1:
                     indexes.append(index)
 
         if layer == 'L':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[0] <= - 1:
                     indexes.append(index)
 
         if layer == 'U':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[1] >= 1:
                     indexes.append(index)
 
         if layer == 'D':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[1] <= - 1:
                     indexes.append(index)
 
         if layer == 'F':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[2] >= 1:
                     indexes.append(index)
 
         if layer == 'B':
-            for elem, index in zip (self.stickers, range(len(self.stickers))):
+            for elem, index in zip(self.stickers, range(len(self.stickers))):
                 if elem.point.position[2] <= -1:
                     indexes.append(index)
 
@@ -172,71 +172,88 @@ class Cube:
 
         if layer == 'x' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_counter_clockwise(self.stickers[i].point)
         if layer == 'x' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_clockwise(self.stickers[i].point)
         if layer == 'y' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_counter_clockwise(self.stickers[i].point)
         if layer == 'y' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_clockwise(self.stickers[i].point)
         if layer == 'z' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_z_counter_clockwise(self.stickers[i].point)
         if layer == 'z' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
-
+                self.stickers[i].point = \
+                    rotate_about_z_counter_clockwise(self.stickers[i].point)
 
         if layer == 'R' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_counter_clockwise(self.stickers[i].point)
 
         if layer == 'R' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_clockwise(self.stickers[i].point)
 
         if layer == 'L' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_clockwise(self.stickers[i].point)
 
         if layer == 'L' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_x_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_x_counter_clockwise(self.stickers[i].point)
 
         if layer == 'U' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_counter_clockwise(self.stickers[i].point)
 
         if layer == 'U' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_clockwise(self.stickers[i].point)
 
         if layer == 'D' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_clockwise(self.stickers[i].point)
 
         if layer == 'D' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_y_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_y_counter_clockwise(self.stickers[i].point)
 
         if layer == 'F' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_z_counter_clockwise(self.stickers[i].point)
 
         if layer == 'F' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_z_clockwise(self.stickers[i].point)
 
         if layer == 'B' and not counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_z_clockwise(self.stickers[i].point)
 
         if layer == 'B' and counter_clockwise:
             for i in indexes:
-                self.stickers[i].point = rotate_about_z_counter_clockwise(self.stickers[i].point)
+                self.stickers[i].point = \
+                    rotate_about_z_counter_clockwise(self.stickers[i].point)
 
     def perform_move_sequence(self, sequence):
         '''
