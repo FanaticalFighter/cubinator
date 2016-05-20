@@ -1,13 +1,19 @@
 from point import *
 from rotation import *
 import kociemba
+import serial
+import sequence_decomposer as sd
 
 
 def main():
     c = Cube()
     c.perform_move_sequence("R U R' U R U U R'")
     string = c.get_kociemba_string()
-    print kociemba.solve(string)
+    solve_str = kociemba.solve(string)
+    solve_str = sd.decompose_sequence(solve_str)
+
+    ser = serial.Serial('/dev/tty.usbserial', 9600)
+    ser.write(solve_str)
 
 
 class Sticker:
