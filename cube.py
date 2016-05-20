@@ -19,39 +19,40 @@ def build_cube_from_webcam():
 
     imgname = "photoaf.jpg"
 
-    url = raw_input("Enter WebCam IP = ")
+    # url = raw_input("Enter WebCam IP = ")
+    url = "192.168.43.1:8080"
     url = "http://" + url + "/photoaf.jpg"
 
     # TODO add code to send moves to arduino here
 
     get_image(imgname, url)
     c.color_down_face(imgname)  # yellow face
-    input()
+    raw_input()
 
     c.perform_move('z')  # go to red face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
-    input()
+    raw_input()
 
     c.perform_move('z')  # go to white face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
-    input()
+    raw_input()
 
     c.perform_move('z')  # go to orange face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
-    input()
+    raw_input()
 
     c.perform_move('x')  # go to blue face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
-    input()
+    raw_input()
 
     c.perform_move_sequence('x x')  # go to green face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
-    input()
+    raw_input()
 
     c.perform_move_sequence('x z')  # return to white on top, green on front
 
@@ -222,8 +223,8 @@ class Cube:
                 z = j + 1
 
                 # all down stickers have y = -2
-                s = _find_sticker_at(Point(x, -2, z))
-                s.color = colors(x, y)
+                s = _find_sticker_at(Point(i, -2, j))
+                s.color = colors[x, z]
 
     def perform_move(self, move):
         '''
