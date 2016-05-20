@@ -1,6 +1,14 @@
 from point import *
 from rotation import *
+import kociemba
 
+def main():
+    c = Cube()
+    c.perform_move_sequence("R U R' U R U U R'")
+    print c
+    string = c.get_kociemba_string()
+    print string, len(string)
+    print kociemba.solve(string)
 
 class Sticker:
     def __init__(self, point, color):
@@ -168,8 +176,7 @@ class Cube:
             'blue': 'B'
         }
 
-        kociemba_str = ""
-
+        kociemba_str = ''
         self.perform_move("x'")  # go to up face
 
         for j in range(-1, 2):
@@ -205,7 +212,7 @@ class Cube:
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
-        self.perform_move_sequence("y y")  # go to back face
+        self.perform_move_sequence("y'")  # go to back face
 
         for j in range(-1, 2):
             for i in range(-1, 2):
@@ -327,3 +334,6 @@ class Cube:
         moves = sequence.split(' ')
         for move in moves:
             self.perform_move(move)
+
+if __name__ == '__main__':
+    main()
