@@ -2,6 +2,33 @@ from point import *
 from rotation import *
 
 
+def build_cube_from_webcam():
+    c = Cube()
+
+    # TODO add code to take image here
+    # TODO add code to send moves to arduino here
+
+    imgname = "photoaf.jpg"
+
+    color_down_face(imgname)  # yellow face
+
+    c.perform_move('x')  # go to red face on down
+    color_down_face(imgname)
+
+    c.perform_move('x')  # go to white face on down
+    color_down_face(imgname)
+
+    c.perform_move('x')  # go to orange face on down
+    color_down_face(imgname)
+
+    c.perform_move('y')  # go to blue face on down
+    color_down_face(imgname)
+
+    c.perform_move_sequence('y y')  # go to green face on down
+    color_down_face(imgname)
+
+    return c
+
 class Sticker:
     def __init__(self, point, color):
         '''
