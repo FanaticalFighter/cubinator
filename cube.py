@@ -25,26 +25,32 @@ def build_cube_from_webcam():
 
     get_image(imgname, url)
     c.color_down_face(imgname)  # yellow face
+    input()
 
     c.perform_move('z')  # go to red face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
+    input()
 
     c.perform_move('z')  # go to white face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
+    input()
 
     c.perform_move('z')  # go to orange face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
+    input()
 
     c.perform_move('x')  # go to blue face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
+    input()
 
     c.perform_move_sequence('x x')  # go to green face on down
     get_image(imgname, url)
     c.color_down_face(imgname)
+    input()
 
     c.perform_move_sequence('x z')  # return to white on top, green on front
 
