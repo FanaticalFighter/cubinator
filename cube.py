@@ -27,6 +27,8 @@ def build_cube_from_webcam():
     c.perform_move_sequence('x x')  # go to green face on down
     color_down_face(imgname)
 
+    c.perform_move_sequence('x z')  # return to white on top, green on front
+
     return c
 
 
