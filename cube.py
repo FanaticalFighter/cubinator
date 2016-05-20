@@ -153,6 +153,22 @@ class Cube:
 
         return indexes
 
+    def color_down_face(self, imgname):
+        '''
+        Colors the down face from the image from imgname using cv
+        '''
+
+        colors = cv.return_face_colors(imgname)
+
+        for i in range(-1, 2):
+            for j in range(-1, 2):
+                x = i + 1
+                z = j + 1
+
+                # all down stickers have y = -2
+                s = _find_sticker_at(Point(x, -2, z))
+                s.color = colors(x, y)
+
     def perform_move(self, move):
         '''
         Parses 'move' as a move string (e.g R' or D etc. and performs it on the
