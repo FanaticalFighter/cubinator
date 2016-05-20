@@ -1,0 +1,3 @@
+[submodule "cubinator-cv"]
+	path = cubinator-cv
+	url = https://FanaticalFighter@github.com/FanaticalFighter/cubinator-cv.git
