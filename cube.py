@@ -13,7 +13,13 @@ def main():
     solve_str = sd.decompose_sequence(solve_str)
 
     ser = serial.Serial('/dev/tty.usbserial', 9600)
-    ser.write(solve_str)
+
+    moves = solve_str.split(' ')
+    for move in moves:
+        ser.write(move)
+
+        ser.readline()  # wait for move completed response
+        raw_input()  # wait for user input
 
 
 class Sticker:
