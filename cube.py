@@ -12,22 +12,23 @@ def build_cube_from_webcam():
 
     color_down_face(imgname)  # yellow face
 
-    c.perform_move('x')  # go to red face on down
+    c.perform_move('z')  # go to red face on down
     color_down_face(imgname)
 
-    c.perform_move('x')  # go to white face on down
+    c.perform_move('z')  # go to white face on down
     color_down_face(imgname)
 
-    c.perform_move('x')  # go to orange face on down
+    c.perform_move('z')  # go to orange face on down
     color_down_face(imgname)
 
-    c.perform_move('y')  # go to blue face on down
+    c.perform_move('x')  # go to blue face on down
     color_down_face(imgname)
 
-    c.perform_move_sequence('y y')  # go to green face on down
+    c.perform_move_sequence('x x')  # go to green face on down
     color_down_face(imgname)
 
     return c
+
 
 class Sticker:
     def __init__(self, point, color):
