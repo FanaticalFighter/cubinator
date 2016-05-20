@@ -2,13 +2,14 @@ from point import *
 from rotation import *
 import kociemba
 
+
 def main():
     c = Cube()
     c.perform_move_sequence("R U R' U R U U R'")
-    print c
     string = c.get_kociemba_string()
     print string, len(string)
     print kociemba.solve(string)
+
 
 class Sticker:
     def __init__(self, point, color):
@@ -179,42 +180,42 @@ class Cube:
         kociemba_str = ''
         self.perform_move("x'")  # go to up face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
         self.perform_move_sequence("x y")  # go to right face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
         self.perform_move("y'")  # go to front face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
         self.perform_move("x")  # go to down face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
         self.perform_move_sequence("x' y'")  # go to left face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
 
         self.perform_move_sequence("y'")  # go to back face
 
-        for j in range(-1, 2):
+        for j in range(1, -2, -1):
             for i in range(-1, 2):
                 s = self._find_sticker_at(Point(i, j, 2))
                 kociemba_str += colors[s.color]
