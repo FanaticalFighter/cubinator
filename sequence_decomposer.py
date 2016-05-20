@@ -27,5 +27,3 @@ def decompose_sequence(move_sequence):
         decomposed_sequence += current_move + ' '
 
     return decomposed_sequence
-
-print decompose_sequence("R U R' U R U U R")
