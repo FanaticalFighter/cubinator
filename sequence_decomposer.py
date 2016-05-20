@@ -24,6 +24,25 @@ def decompose_sequence(move_sequence):
 
         decomposed_sequence += current_move + ' '
 
+    print decomposed_sequence
+
+    ds = decomposed_sequence.split(' ')
+    new_ds = ''
+    skipping = False
+
+    for i in range(1, len(ds) + 1):
+        if i < len(ds) and (ds[i - 1] == ds[i] + "'" or ds[i - 1] + "''" == ds[i]):
+            skipping = True
+            continue
+        elif skipping:
+            skipping = False
+            continue
+        else:
+            new_ds += ds[i - 1] + ' '
+
+    decomposed_sequence = new_ds
+
+    print decomposed_sequence
     return decomposed_sequence
 
-print decompose_sequence("R U R' U R U U R")
+decompose_sequence("R U R' U R U U R'")
