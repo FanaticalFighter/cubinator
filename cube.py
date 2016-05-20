@@ -7,7 +7,6 @@ def main():
     c = Cube()
     c.perform_move_sequence("R U R' U R U U R'")
     string = c.get_kociemba_string()
-    print string, len(string)
     print kociemba.solve(string)
 
 
