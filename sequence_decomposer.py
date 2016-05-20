@@ -7,7 +7,17 @@ def decompose_sequence(move_sequence):
     moves = move_sequence.split(' ')
 
     decomposed_sequence = ''
+    for move in moves:
+        if len(move) > 1 and move[1] == '2':
+            decomposed_sequence += move[0] + ' ' + move[0] + ' '
+            print decomposed_sequence, '***'
+        else:
+            decomposed_sequence += move + ' '
 
+    print decomposed_sequence
+    moves = decomposed_sequence.split(' ')
+
+    decomposed_sequence = ''
     for move in moves:
         current_move = move
         if move in ["U", "U'", "D", "D'"]:
@@ -45,4 +55,4 @@ def decompose_sequence(move_sequence):
     print decomposed_sequence
     return decomposed_sequence
 
-decompose_sequence("R U R' U R U U R'")
+decompose_sequence("R U R' U R U2 R'")
