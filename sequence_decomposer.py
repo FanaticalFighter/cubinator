@@ -10,7 +10,6 @@ def decompose_sequence_along_z(move_sequence):
     for move in moves:
         if len(move) > 1 and move[1] == '2':
             decomposed_sequence += move[0] + ' ' + move[0] + ' '
-            print decomposed_sequence, '***'
         else:
             decomposed_sequence += move + ' '
 
@@ -33,7 +32,6 @@ def decompose_sequence_along_z(move_sequence):
 
         decomposed_sequence += current_move + ' '
 
-    print decomposed_sequence
 
     ds = decomposed_sequence[:-1].split(' ')  # remove the trailing whitespace
     new_ds = ''
@@ -51,7 +49,6 @@ def decompose_sequence_along_z(move_sequence):
 
     decomposed_sequence = new_ds[:-1]  # removing the trailing whitespace
 
-    print decomposed_sequence
 
     lastTurn = ''
     ds = decomposed_sequence.split(' ')
@@ -59,15 +56,12 @@ def decompose_sequence_along_z(move_sequence):
     ds.remove('')
     i = 0
     while i < len(ds):
-        print ds
         if (ds[i] == 'z' or ds[i] == "z'" and lastTurn == ''):
             lastTurn = ds[i]
         elif (i < len(ds) - 1 and ((lastTurn == "z" and ds[i] == "z'") or (lastTurn == "z'" and ds[i] == "z")) and ds[i + 1][0] not in "RLzxy"):
             ds[i + 1], ds[i] = ds[i], ds[i + 1]  # swap 'z' with next move
         elif (ds[i] == lastTurn + "'" or ds[i] + "'" == lastTurn):
             lastTurn = ''
-
-        print ds
 
         new_ds = ''
         for j in range(1, len(ds) + 1):
@@ -88,7 +82,6 @@ def decompose_sequence_along_z(move_sequence):
 
     decomposed_sequence = ' '.join(ds)
 
-    print decomposed_sequence
     return decomposed_sequence
 
 def decompose_sequence_along_x(move_sequence):
@@ -103,7 +96,6 @@ def decompose_sequence_along_x(move_sequence):
     for move in moves:
         if len(move) > 1 and move[1] == '2':
             decomposed_sequence += move[0] + ' ' + move[0] + ' '
-            print decomposed_sequence, '***'
         else:
             decomposed_sequence += move + ' '
 
@@ -126,7 +118,6 @@ def decompose_sequence_along_x(move_sequence):
 
         decomposed_sequence += current_move + ' '
 
-    print decomposed_sequence
 
     ds = decomposed_sequence[:-1].split(' ')  # remove the trailing whitespace
     new_ds = ''
@@ -144,7 +135,6 @@ def decompose_sequence_along_x(move_sequence):
 
     decomposed_sequence = new_ds[:-1]  # removing the trailing whitespace
 
-    print decomposed_sequence
 
     lastTurn = ''
     ds = decomposed_sequence.split(' ')
@@ -152,7 +142,6 @@ def decompose_sequence_along_x(move_sequence):
     ds.remove('')
     i = 0
     while i < len(ds):
-        print ds
         if (ds[i] == 'x' or ds[i] == "x'" and lastTurn == ''):
             lastTurn = ds[i]
         elif (i < len(ds) - 1 and ((lastTurn == "x" and ds[i] == "x'") or (lastTurn == "x'" and ds[i] == "x")) and ds[i + 1][0] not in "RLzxy"):
@@ -160,7 +149,6 @@ def decompose_sequence_along_x(move_sequence):
         elif (ds[i] == lastTurn + "'" or ds[i] + "'" == lastTurn):
             lastTurn = ''
 
-        print ds
 
         new_ds = ''
         for j in range(1, len(ds) + 1):
@@ -181,7 +169,6 @@ def decompose_sequence_along_x(move_sequence):
 
     decomposed_sequence = ' '.join(ds)
 
-    print decomposed_sequence
     return decomposed_sequence
 
 def decompose_sequence(sequence):
@@ -192,5 +179,3 @@ def decompose_sequence(sequence):
         return z
     else:
         return x
-
-decompose_sequence("R U2 F U2")
