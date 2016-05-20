@@ -8,6 +8,7 @@ import urllib2
 def get_image(imgname, url):
 
     f = urllib2.urlopen(url)
+    print("Reading from " + url)
     data = f.read()
     with open(imgname, 'wb') as img:
         img.write(data)
@@ -336,5 +337,6 @@ class Cube:
         for move in moves:
             self.perform_move(move)
 
+print "Building cube from webcam"
 c = build_cube_from_webcam()
 print c
