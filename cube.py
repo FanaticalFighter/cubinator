@@ -3,11 +3,12 @@ from rotation import *
 import kociemba
 import serial
 import sequence_decomposer as sd
+import cv.cv as cv
+import urllib2
 
 
 def main():
-    c = Cube()
-    c.perform_move_sequence("R U R' U R U U R'")
+    c = build_cube_from_webcam()
     string = c.get_kociemba_string()
     solve_str = kociemba.solve(string)
     solve_str = sd.decompose_sequence(solve_str)
@@ -21,6 +22,77 @@ def main():
         ser.readline()  # wait for move completed response
         raw_input()  # wait for user input
 
+
+def get_image(imgname, url):
+
+    f = urllib2.urlopen(url)
+    print("Reading from " + url)
+    data = f.read()
+    with open(imgname, 'wb') as img:
+        img.write(data)
+
+
+def build_cube_from_webcam():
+    c = Cube()
+
+    imgname = "photoaf.jpg"
+
+    # url = raw_input("Enter WebCam IP = ")
+    url = "192.168.43.1:8080"
+    url = "http://" + url + "/photoaf.jpg"
+
+    # TODO add code to send moves to arduino here
+
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)  # yellow face
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move('z')  # go to red face on down
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move('z')  # go to white face on down
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move('z')  # go to orange face on down
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move('x')  # go to blue face on down
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move_sequence('x x')  # go to green face on down
+    while(True):
+        get_image(imgname, url)
+        c.color_down_face(imgname)
+        i = raw_input()
+        if i != 'r':
+            break
+
+    c.perform_move_sequence('x z')  # return to white on top, green on front
+
+    return c
 
 class Sticker:
     def __init__(self, point, color):
@@ -173,6 +245,7 @@ class Cube:
 
         return indexes
 
+<<<<<<< HEAD
     def get_kociemba_string(self):
         '''
         Returns a string in the format that the kociemba library accepts
@@ -234,6 +307,22 @@ class Cube:
         self.perform_move_sequence("y y")  # go to back to the front face
 
         return kociemba_str
+=======
+    def color_down_face(self, imgname):
+        '''
+        Colors the down face from the image from imgname using cv
+        '''
+
+        colors = cv.return_face_colors(imgname)
+
+        for i in range(-1, 2):
+            for j in range(-1, 2):
+                x = i + 1
+                z = j + 1
+
+                # all down stickers have y = -2
+                s = _find_sticker_at(Point(i, -2, j))
+                s.color = colors[x, z]
 
     def perform_move(self, move):
         '''
@@ -347,5 +436,11 @@ class Cube:
         for move in moves:
             self.perform_move(move)
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     main()
+=======
+print "Building cube from webcam"
+c = build_cube_from_webcam()
+print c
+>>>>>>> feature/cv-integration
