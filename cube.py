@@ -94,6 +94,7 @@ def build_cube_from_webcam():
 
     return c
 
+
 class Sticker:
     def __init__(self, point, color):
         '''
@@ -245,7 +246,6 @@ class Cube:
 
         return indexes
 
-<<<<<<< HEAD
     def get_kociemba_string(self):
         '''
         Returns a string in the format that the kociemba library accepts
@@ -307,7 +307,7 @@ class Cube:
         self.perform_move_sequence("y y")  # go to back to the front face
 
         return kociemba_str
-=======
+        
     def color_down_face(self, imgname):
         '''
         Colors the down face from the image from imgname using cv
@@ -436,11 +436,5 @@ class Cube:
         for move in moves:
             self.perform_move(move)
 
-<<<<<<< HEAD
 if __name__ == '__main__':
     main()
-=======
-print "Building cube from webcam"
-c = build_cube_from_webcam()
-print c
->>>>>>> feature/cv-integration
