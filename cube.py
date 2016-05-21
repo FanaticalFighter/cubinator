@@ -13,7 +13,7 @@ def main():
     solve_str = kociemba.solve(string)
     solve_str = sd.decompose_sequence(solve_str)
 
-    ser = serial.Serial('/dev/tty.usbserial', 9600)
+    ser = serial.Serial('/dev/tty.usbmodem1411', 9600)
 
     moves = solve_str.split(' ')
     for move in moves:
